@@ -1,6 +1,6 @@
 # KSE624-Team1
 # Cheersbot
-Cheers with Cheersbot!
+Let's Cheers with Cheersbot!
 
 ### Watch the Demo video
 [![Watch the video](https://img.youtube.com/vi/7Yft4uTX8Ms/maxresdefault.jpg)](https://youtu.be/7Yft4uTX8Ms)
@@ -15,6 +15,20 @@ Our team thought that enjoying time wisely with fun interaction is what people n
 We focus on the problem that drinking through video call can fills visual and auditory elements, but not physical interaction. Also, since you are drinking alone, it is important to know your drinking status.
 
 ## Pre-requirement
+### Files needed for audio output & Voice recognition
+#### How we get '.wav' file 
+1. visit https://clova.ai/voice
+2. you can record sentence with AI voice. record the sentence for '1zzan.mp3', '2zzan.mp3'and so on.
+3. If you get .mp3 file, visit the https://online-audio-converter.com/ko/ and convert .mp3 file to .wav file
+
+#### How we get '.pmdl' file
+snowboy provides a personal model. The process is very simple, like this:
+
+1. visit the url: https://snowboy.kitt.ai/
+2. Login in with social media
+3. click the Create Hotword and set your Hotword like "how much glasses I drink?" and record your voice
+4. Test the model and click save and download button. Then you can get pmdl (personal model) files
+
 ### Hardware Components
 ![cheersbot_component](https://user-images.githubusercontent.com/44702454/86465579-e38ce200-bd6c-11ea-936a-edb10434db80.png)
 + Jetbot
@@ -24,7 +38,6 @@ We focus on the problem that drinking through video call can fills visual and au
 + Medium-density fibreboard(MDF) (for Laser-cutted customized appearance)
 
 ### Software setup
-
 #### Installation
 1. Please install smbus and FaBoAxis_MPU9250
 In your terminal, make sure you have pip3 installled.
@@ -42,7 +55,9 @@ pip3 install smbus2 <code>
 
 Install the FaBo9Axis_MPU9250
 
-```pip3 install FaBo9Axis_MPU9250```
+```
+pip3 install FaBo9Axis_MPU9250
+```
 
 Refer to the following link: https://brisbaneroboticsclub.id.au/install-keystudio-i2c-shield-v1/
 
@@ -67,5 +82,30 @@ You can download them in here: https://drive.google.com/drive/folders/1hhn2-ccdg
 	3. After that, say specific sentence(such as 'Shall we cheers?' or 'How much cheers?') then it will give the auditory feedbacks.
 	4. Iterate it until the while loop is terminated.
 	5. If Cheersbot doesn't stop, excute last cell.
+## Overall Flowchart
+![image](https://user-images.githubusercontent.com/44702454/86480632-55732480-bd89-11ea-98f5-0b8ee45d7015.png)
+### Four Main feature
+1. 'Cheers' Interaction
+2. Voice Recognition & Feedback
+3. Let me know how much I drink
+4. Reject cheers if the user drinkd too much
+
+![mainfeature1](https://user-images.githubusercontent.com/44702454/86477443-69b42300-bd83-11ea-9d7e-5a8479e8b8e1.png)
+![mainfeature1_2](https://user-images.githubusercontent.com/44702454/86477490-7fc1e380-bd83-11ea-9535-67d6fa3e4c94.png)
+![mainfeature2](https://user-images.githubusercontent.com/44702454/86477516-8a7c7880-bd83-11ea-8984-2866039661e9.png)
+![mainfeature2_2](https://user-images.githubusercontent.com/44702454/86477533-9405e080-bd83-11ea-8440-4bd8b2112f6d.png)
+![mainfeature3](https://user-images.githubusercontent.com/44702454/86477550-9f590c00-bd83-11ea-8136-dc7f1abef642.png)
+![mainfeature4](https://user-images.githubusercontent.com/44702454/86477566-a849dd80-bd83-11ea-99ce-cbcc2f99d640.png)
+
+## Laser-cutted customized appearance
+I use my school's free laser cutting area('IDEA FACTORY' @KAIST) so, This tutorial is totally dependent on certain place's condition. In my case,'.DXF file' is needed, if you trying to use laser cutting machine @ IDEA FACTORY.
+![KakaoTalk_20200703_234655791_13](https://user-images.githubusercontent.com/44702454/86485100-cff47200-bd92-11ea-998d-e77e128b2677.jpg)
+
+There were lot of ways to make .DXF file. If you are not good at manipulating tool such as AutoCAD,Fusion360 from Autodesk.I recommend very usefull website. https://en.makercase.com/#/ This welsite provide basic model as .DXF file. still, it needs a little modification, but You can make .DXF file easier.
+I expecially consider that Jetbot should attached with lots of lines. so that I made a hole for lines.
+(I attached `Cheersbot(ProductDrawing).dxf` file)
+once, you make .DXF file bring it to laser cutting machine.and Then, run the machine.
+
+Then, you will get a seperate MDF part. Glue the parts with super glue. 
 
 
