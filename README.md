@@ -2,9 +2,10 @@
 # Cheersbot
 Let's Cheers with Cheersbot!
 
-### Watch the Demo video
-[![Watch the video](https://img.youtube.com/vi/7Yft4uTX8Ms/maxresdefault.jpg)](https://youtu.be/7Yft4uTX8Ms)
+### Watch the Demo video & Slide
+[![Video Label](http://img.youtube.com/vi/7Yft4uTX8Ms/0.jpg)](https://youtu.be/7Yft4uTX8Ms=0s)
 
+[Link to Slide](https://docs.google.com/presentation/d/1DhWW_3buYzDjDduUoTDXJvPRc6uU8FgfSCC8IZCqkdQ/edit?usp=sharing)
 
 ## introduction
 After the Covid 19 Pandemic, people cannot drink outside. People are looking for alternatives such as 'Drinking with friends through video-call'. This new type of drinking culture is beginning to trend.
@@ -38,6 +39,19 @@ snowboy provides a personal model. The process is very simple, like this:
 + Medium-density fibreboard(MDF) (for Laser-cutted customized appearance)
 
 ### Software setup
+### How to download trianed model
+you need to download COCO-trained models
+To detect the hand with various types of glass, we used pre-trained neural network pre-trained on the COCO dataset.
+COCO-dataset is specialized in large-scaled object detection. It includes:
+index 0- Person
+index 47- Cup
+If a hand with glass is in front of camera, then this model can detect it as index 0 or 47.
+You can download the pre-trained engine in here: https://drive.google.com/file/d/1eZsGracgHo5zSakGMHcW2ET19UtLfDKf/view?usp=sharing
+
+The model is made from the ObjectDetector API(from TensorFlow).
+Once the model is built, NVIDIA TensorRT can optimize it: real-time execution is capable on Jetson Nano.
+Using this model, we don't have to train and optimize the model.
+
 #### Installation
 1. Please install smbus and FaBoAxis_MPU9250
 In your terminal, make sure you have pip3 installled.
@@ -107,5 +121,6 @@ I expecially consider that Jetbot should attached with lots of lines. so that I 
 once, you make .DXF file bring it to laser cutting machine.and Then, run the machine.
 
 Then, you will get a seperate MDF part. Glue the parts with super glue. 
+
 
 
