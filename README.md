@@ -128,14 +128,10 @@ I recommend a very useful [website.](https://en.makercase.com/#/) This website p
 + You will get the .DXF file within a few minutes!
 + If you want to modify, open **.DXF file** at AutoCAD or Fusion360 and then modify it as you want.
 
-<img src = "https://user-images.githubusercontent.com/44702454/86485100-cff47200-bd92-11ea-998d-e77e128b2677.jpg" width="500px"><img src = "https://user-images.githubusercontent.com/44702454/86588437-a3c13700-bfc6-11ea-884b-f7834560fd69.jpg" width="500px">
+<img src = "https://user-images.githubusercontent.com/44702454/86588581-eedb4a00-bfc6-11ea-93c2-fd6948b004e2.jpg" width="500px"><img src = "https://user-images.githubusercontent.com/44702454/86588437-a3c13700-bfc6-11ea-884b-f7834560fd69.jpg" width="500px">
 
 I especially consider that Jetbot should be attached with lots of lines. so that I made a hole for lines.
 (I attached `Cheersbot(ProductDrawing).dxf` file)
 Once, you make **.DXF file** bring it to laser cutting machine. and Then, run the machine.
 
 Then, you will get a separate MDF part. Glue the parts with super glue. 
-
-
-
-
