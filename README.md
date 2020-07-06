@@ -18,14 +18,15 @@ We focus on the problem that drinking through video call can fills visual and au
 ## Pre-requirement
 ### Files needed for audio output & Voice recognition
 #### How we get '.wav' file 
-1. visit https://clova.ai/voice
+1. visit [NAVER CLOVA](https://clova.ai/voice)
 2. you can record sentence with AI voice. record the sentence for '1zzan.mp3', '2zzan.mp3'and so on.
-3. If you get .mp3 file, visit the https://online-audio-converter.com/ko/ and convert .mp3 file to .wav file
+3. If you get .mp3 file, visit the [audio converter website](https://online-audio-converter.com/ko/) to convert .mp3 file to .wav file.
+4. Open your file and click the wav button and '변환(convert)'button in order.
 
 #### How we get '.pmdl' file
 snowboy provides a personal model. The process is very simple, like this:
 
-1. visit the url: https://snowboy.kitt.ai/
+1. visit the [Snowboy website](https://snowboy.kitt.ai/)
 2. Login in with social media
 3. click the Create Hotword and set your Hotword like "how much glasses I drink?" and record your voice
 4. Test the model and click save and download button. Then you can get pmdl (personal model) files
@@ -40,17 +41,21 @@ snowboy provides a personal model. The process is very simple, like this:
 
 ### Software setup
 ### How to download trianed model
-you need to download COCO-trained models
-To detect the hand with various types of glass, we used pre-trained neural network pre-trained on the COCO dataset.
-COCO-dataset is specialized in large-scaled object detection. It includes:
-index 0- Person
-index 47- Cup
-If a hand with glass is in front of camera, then this model can detect it as index 0 or 47.
-You can download the pre-trained engine in here: https://drive.google.com/file/d/1eZsGracgHo5zSakGMHcW2ET19UtLfDKf/view?usp=sharing
+Instead of building the machine learning model, we used pre-trained SSD MobileNet V2 model to recognize hand with glass. You need to download this model(ssd_mobilenet_v2_coco.engine). 
+
+This model is trained using COCO-dataset: It is the dataset used for large-scaled object detection. It includes 90 kinds of different objects. 
+Among them, we want to recognize two objects:
+
++ index 0- Person
++ index 47- Cup
++ If a hand with glass is in front of camera, then this model can detect it as index 0 or 47.
+
+You can download the pre-trained engine in [here](https://drive.google.com/file/d/1eZsGracgHo5zSakGMHcW2ET19UtLfDKf/view?usp=sharing)
 
 The model is made from the ObjectDetector API(from TensorFlow).
-Once the model is built, NVIDIA TensorRT can optimize it: real-time execution is capable on Jetson Nano.
-Using this model, we don't have to train and optimize the model.
+Once the model is built, NVIDIA TensorRT can optimize it: real-time execution is capable on Jetson Nano. 
+
+**TensorRT is kind of SDK & Toolkit.**  It provides an inference optimizer and runtime engine, so without expertise, you can conduct high-performance inferencing. Using this model, we don't have to train and optimize the model.
 
 #### Installation
 1. Please install smbus and FaBoAxis_MPU9250
@@ -73,10 +78,10 @@ Install the FaBo9Axis_MPU9250
 pip3 install FaBo9Axis_MPU9250
 ```
 
-Refer to the following link: https://brisbaneroboticsclub.id.au/install-keystudio-i2c-shield-v1/
+Refer to the following [link](https://brisbaneroboticsclub.id.au/install-keystudio-i2c-shield-v1/)
 
 2. Install the snowboy and make your own pmdl model
-You can do it in following link: https://snowboy.kitt.ai/ 
+You can do it in following [Snowboy website](https://snowboy.kitt.ai/) 
 (You have to register and make your own id)
 
 We made two models: howmuch.pmdl(using 'How much cheers?') and zzanhalgga(using 'Shall we cheers?')
@@ -84,9 +89,9 @@ Download the pmdl model and store them in the path which contains your python no
 
 #### Download
 1. Download the wav files and store them at the path which contains your notebook.
-You can download them in here: https://drive.google.com/drive/folders/1hhn2-ccdgHKmKi6KiMCy6lB9r9NzFBiP?usp=sharing
+You can download them in [here](https://drive.google.com/drive/folders/1hhn2-ccdgHKmKi6KiMCy6lB9r9NzFBiP?usp=sharing)
 
-2. Download the 'ssd_mobilenet_v2_coco.engine' dataset(You can easily find it in Google.) and store it at the path which contains your notebook.
+2. Download the 'ssd_mobilenet_v2_coco.engine' dataset(You can easily find it in Google) and store it at the path which contains your notebook.
 
 ## How to operate
 1. Except last two cells, all of the cells above import the required modules and define the function.
@@ -104,23 +109,31 @@ You can download them in here: https://drive.google.com/drive/folders/1hhn2-ccdg
 3. Let me know how much I drink
 4. Reject cheers if the user drinkd too much
 
-![mainfeature1](https://user-images.githubusercontent.com/44702454/86477443-69b42300-bd83-11ea-9d7e-5a8479e8b8e1.png)
-![mainfeature1_2](https://user-images.githubusercontent.com/44702454/86477490-7fc1e380-bd83-11ea-9535-67d6fa3e4c94.png)
-![mainfeature2](https://user-images.githubusercontent.com/44702454/86477516-8a7c7880-bd83-11ea-8984-2866039661e9.png)
-![mainfeature2_2](https://user-images.githubusercontent.com/44702454/86477533-9405e080-bd83-11ea-8440-4bd8b2112f6d.png)
-![mainfeature3](https://user-images.githubusercontent.com/44702454/86477550-9f590c00-bd83-11ea-8136-dc7f1abef642.png)
-![mainfeature4](https://user-images.githubusercontent.com/44702454/86477566-a849dd80-bd83-11ea-99ce-cbcc2f99d640.png)
+
+<img src = "https://user-images.githubusercontent.com/44702454/86585474-7cb43680-bfc1-11ea-9a18-9b6d628acc79.png" width="500px"><img src = "https://user-images.githubusercontent.com/44702454/86477490-7fc1e380-bd83-11ea-9535-67d6fa3e4c94.png" width="500px">
+<img src = "https://user-images.githubusercontent.com/44702454/86477516-8a7c7880-bd83-11ea-8984-2866039661e9.png" width="500px"><img src = "https://user-images.githubusercontent.com/44702454/86477533-9405e080-bd83-11ea-8440-4bd8b2112f6d.png" width="500px">
+<img src = "https://user-images.githubusercontent.com/44702454/86477550-9f590c00-bd83-11ea-8136-dc7f1abef642.png" width="500px"><img src = "https://user-images.githubusercontent.com/44702454/86585550-98b7d800-bfc1-11ea-9393-29447a64a1ed.png" width="500px">
 
 ## Laser-cutted customized appearance
-I use my school's free laser cutting area('IDEA FACTORY' @KAIST) so, This tutorial is totally dependent on certain place's condition. In my case,'.DXF file' is needed, if you trying to use laser cutting machine @ IDEA FACTORY.
-![KakaoTalk_20200703_234655791_13](https://user-images.githubusercontent.com/44702454/86485100-cff47200-bd92-11ea-998d-e77e128b2677.jpg)
+I use my school's free laser cutting area('IDEA FACTORY' @KAIST) so, This tutorial is totally dependent on a certain place's condition. In my case,'.DXF file' is needed if you trying to use a laser cutting machine @ IDEA FACTORY.
+<img src = "https://user-images.githubusercontent.com/44702454/86485100-cff47200-bd92-11ea-998d-e77e128b2677.jpg" width="500px">
 
-There were lot of ways to make .DXF file. If you are not good at manipulating tool such as AutoCAD,Fusion360 from Autodesk.I recommend very usefull website. https://en.makercase.com/#/ This welsite provide basic model as .DXF file. still, it needs a little modification, but You can make .DXF file easier.
-I expecially consider that Jetbot should attached with lots of lines. so that I made a hole for lines.
+There were a lot of ways to make a .DXF file. If you are not good at manipulating tools such as AutoCAD, Fusion360 from Autodesk.
+I recommend a very useful [website.](https://en.makercase.com/#/) This website provides a basic model as a **.DXF file.** still, it needs a little modification, but You can make **.DXF file** easier.
++ Choose the Box type (Basic Box, Polygon Box, Kerf Bent Box)
++ Set the **Units, Width, Height, Depth** as you measured before or it could be the **sides, size, Inside Diameters etc.**(it's totally different from the box type)
++ Choose another options below.  
++ Click the **Download Box Plans** and then new pop up window will be opened 
++ Check whether the drawing is what expected.
++ Every things Okay, then click the **Download DXF**
++ **You will get the .DXF file within few minutes!**
+
+I especially consider that Jetbot should be attached with lots of lines. so that I made a hole for lines.
 (I attached `Cheersbot(ProductDrawing).dxf` file)
-once, you make .DXF file bring it to laser cutting machine.and Then, run the machine.
+once, you make .DXF file bring it to laser cutting machine. and Then, run the machine.
 
-Then, you will get a seperate MDF part. Glue the parts with super glue. 
+Then, you will get a separate MDF part. Glue the parts with super glue. 
+
 
 
 
